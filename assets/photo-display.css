@@ -1,0 +1,14 @@
+/* Real school photography: full image, clean white canvas, no cropping. */
+.real-feature-image,.real-image-stage,.home-photo-frame{background:#fff!important;overflow:hidden}
+.real-feature-image,.home-photo-frame{isolation:isolate}
+.real-feature-image>.home-real-image,.home-photo-frame>.home-real-image{object-fit:contain!important;object-position:center!important;background:#fff!important}
+.home-photo-frame>.home-real-image{padding:0}
+.home-real-image.image-ready{opacity:1!important}
+.home-generating{border-radius:inherit}
+.home-photo-card{background:#fff}
+.home-photo-card figcaption{background:#fff}
+.gallery-grid-expanded .photo-loader,.gallery-grid-expanded .photo-real{background:#fff!important}
+.gallery-grid-expanded .photo-loader img,.gallery-grid-expanded .photo-real img{object-fit:contain!important;object-position:center!important;background:#fff!important;opacity:1!important}
+.gallery-grid-expanded .photo-loader:after{background:#10213acc}
+.image-fallback{padding:0!important;background:#fff!important}
+@media(max-width:600px){.home-photo-frame{height:300px}.real-feature-image{min-height:340px}}
