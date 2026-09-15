@@ -52,4 +52,10 @@
     img.addEventListener('error',()=>{if(status)status.textContent='Image unavailable';});
   });
   const year = document.getElementById('year'); if(year) year.textContent = new Date().getFullYear();
+
+  if (document.querySelector('.home-hero')) {
+    const slider = document.createElement('script');
+    slider.src = 'assets/home-slider.js?v=1';
+    document.body.appendChild(slider);
+  }
 })();
