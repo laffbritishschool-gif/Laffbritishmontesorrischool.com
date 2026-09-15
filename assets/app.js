@@ -1,4 +1,8 @@
 (() => {
+  const photoStyles = document.createElement('link');
+  photoStyles.rel = 'stylesheet';
+  photoStyles.href = 'assets/photo-display.css?v=2';
+  document.head.appendChild(photoStyles);
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const loader = document.getElementById('site-loader');
   const loaderText = document.getElementById('loader-text');
@@ -25,9 +29,7 @@
     const status = holder?.querySelector('.photo-status');
     const fail = () => {
       if (status) status.textContent = 'Image unavailable';
-      if (generating) {
-        generating.classList.add('done');
-      }
+      if (generating) generating.classList.add('done');
     };
     img.addEventListener('error', fail, {once:true});
     const reveal = async () => {
