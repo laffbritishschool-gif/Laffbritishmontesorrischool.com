@@ -1,1 +1,0 @@
-The gallery photos are managed from the public gallery page.
