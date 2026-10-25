@@ -249,3 +249,5 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand-blue)}
   .site-header.shared-site-header .menu-toggle{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;padding:0;border:1px solid #dce7f3;border-radius:14px;background:#f4f8ff;color:#10213a;cursor:pointer}
   .site-header.shared-site-header .menu-toggle span{display:block;width:18px;height:2px;border-radius:3px;background:#0757b8;transition:transform .2s,opacity .2s}
 }
+
+.site-header.shared-site-header .brand:after{content:none!important;display:none!important}
