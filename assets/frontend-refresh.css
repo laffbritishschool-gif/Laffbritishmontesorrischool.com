@@ -26,6 +26,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .public-nav-drawer a.drawer-result{background:var(--brand-yellow)!important;color:#172b46!important}
 .public-access-actions a{font-size:.78rem!important;min-height:40px}
 main{min-height:55vh}
+.front-page figure{margin:0}
+@media(max-width:1100px){.public-access-actions{display:none!important}}
 .page-hero{max-width:1160px;margin:0 auto;padding:70px 24px 36px!important;text-align:left!important}
 .page-hero .eyebrow,.eyebrow{font-size:.71rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-blue)}
 .page-hero h1,.page-hero h2{max-width:900px;margin:8px 0 14px;font-size:clamp(2.25rem,5vw,4.3rem)!important;line-height:1.04!important;letter-spacing:-.055em!important;color:var(--brand-deep)!important}
