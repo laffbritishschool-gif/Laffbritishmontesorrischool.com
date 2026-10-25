@@ -8,7 +8,7 @@
   }
 
   const portalUrl='https://laff-british-school-student-portal-l8ty.onrender.com/';
-  const schoolLogo='https://i.ibb.co/whtP8S5v/image.png';
+  const schoolLogo='https://raw.githubusercontent.com/laffbritishschool-gif/admin.html/main/assets/school-logo.svg';
   const navItems=[
     {label:'Home',href:'index.html'},
     {label:'About',href:'about.html'},
@@ -135,7 +135,7 @@
       <div class="student-portal-preview" aria-hidden="true">
         <div class="student-portal-topline"><span>Laff British Montessori School</span><span>Student Access</span></div>
         <div class="student-portal-preview-main">
-          <div class="student-portal-logo"><img src="https://i.ibb.co/whtP8S5v/image.png" alt=""></div>
+          <div class="student-portal-logo"><img src="${schoolLogo}" alt=""></div>
           <div><small>WELCOME TO THE</small><strong>Student Portal</strong><span>Your online space for school access, results and student services.</span></div>
         </div>
         <div class="student-portal-ui"><span><i>01</i>Dashboard</span><span><i>02</i>Results</span><span><i>03</i>Services</span></div>
@@ -167,5 +167,80 @@
   const revealImage=img=>{if(img.dataset.generationStarted)return;img.dataset.generationStarted='true';const holder=img.parentElement,g=holder?.querySelector('.home-generating'),status=holder?.querySelector('.photo-status');let done=false;const reveal=()=>{if(done||!img.naturalWidth)return;done=true;setTimeout(()=>{img.classList.add('image-ready');setTimeout(()=>g?.classList.add('done'),380);if(status){status.textContent='Image ready ✓';setTimeout(()=>status.style.opacity='0',450);}},650);};img.addEventListener('load',reveal,{once:true});img.addEventListener('error',()=>{g?.classList.add('done');if(status)status.textContent='Image unavailable';},{once:true});if(img.complete)reveal();};
   document.querySelectorAll('.home-real-image').forEach(revealImage);document.querySelectorAll('.photo-loader img').forEach(img=>{const holder=img.parentElement,status=holder?.querySelector('.photo-status')||holder?.querySelector('span'),finish=()=>{holder?.classList.add('loaded');if(status){status.textContent='Image ready ✓';setTimeout(()=>status.style.opacity='0',450);}};if(img.complete&&img.naturalWidth)finish();else img.addEventListener('load',finish,{once:true});img.addEventListener('error',()=>{if(status)status.textContent='Image unavailable';},{once:true});});
   if(document.querySelector('.home-hero')&&!document.querySelector('script[data-home-slider]')){const s=document.createElement('script');s.src='assets/home-slider.js?v=2';s.dataset.homeSlider='true';document.body.appendChild(s);}
+  const heroSlideshowImages=[
+    {src:'assets/gallery/school-01.jpg',alt:'Learner exploring a textured number during a hands-on activity',tag:'Curiosity begins here',title:'Learning by doing.',subtitle:'Practical experiences for curious young minds.'},
+    {src:'assets/gallery/school-03.jpg',alt:'Learner raising a hand and participating in class',tag:'Confidence in class',title:'Every voice can grow.',subtitle:'Encouraging questions, ideas and discovery.'},
+    {src:'assets/gallery/school-05.jpg',alt:'Pupil carefully working in a school workbook',tag:'Focused learning',title:'Small steps. Strong foundations.',subtitle:'Building concentration and positive learning habits.'},
+    {src:'assets/gallery/school-06.jpg',alt:'Smiling learner holding a textured numeral',tag:'Joyful discovery',title:'Learning can be joyful.',subtitle:'Making new ideas memorable through experience.'},
+    {src:'assets/gallery/school-07.jpg',alt:'Child participating in a classroom lesson',tag:'Ready to participate',title:'Curiosity opens doors.',subtitle:'Helping children share ideas with confidence.'},
+    {src:'assets/gallery/school-08.jpg',alt:'Learner concentrating on a workbook activity',tag:'Growing independence',title:'Proud of every step.',subtitle:'Developing care, practice and self-belief.'},
+    {src:'assets/gallery/school-09.jpg',alt:'Two learners studying alongside one another',tag:'Growing together',title:'Learning side by side.',subtitle:'A school community where children grow together.'},
+    {src:'assets/gallery/school-10.jpg',alt:'Young learner reading and practising independently',tag:'Learning with purpose',title:'Confidence grows each day.',subtitle:'Building focus and independence one task at a time.'},
+    {src:'assets/gallery/school-11.jpg',alt:'Child confidently raising a hand during a lesson',tag:'A voice in the classroom',title:'Brave to ask. Ready to learn.',subtitle:'Supporting participation, communication and growth.'}
+  ];
+  const heroMainImage=document.querySelector('.front-photo-main img');
+  const heroSmallImage=document.querySelector('.front-photo-small img');
+  const heroMainCard=document.querySelector('.front-photo-main');
+  if(heroMainImage&&heroSmallImage&&heroMainCard&&!heroMainImage.dataset.slideshowReady){
+    heroMainImage.dataset.slideshowReady='true';
+    let activeSlide=0;
+    let slideshowTimer=null;
+    const photoLabel=heroMainCard.querySelector('.front-photo-label');
+    const photoTag=photoLabel?.querySelector('span');
+    const photoTitle=photoLabel?.querySelector('strong');
+    const photoSubtitle=photoLabel?.querySelector('small');
+    const controls=document.createElement('div');
+    controls.className='front-photo-controls';
+    controls.setAttribute('aria-label','Featured school photographs');
+    controls.innerHTML='<button class="front-slide-arrow" type="button" data-slide-prev aria-label="Previous school photo">‹</button><div class="front-slide-dots" role="group" aria-label="Choose a school photo"></div><button class="front-slide-arrow" type="button" data-slide-next aria-label="Next school photo">›</button>';
+    heroMainCard.appendChild(controls);
+    const dotsWrap=controls.querySelector('.front-slide-dots');
+    heroSlideshowImages.forEach(function(slide,index){
+      const dot=document.createElement('button');
+      dot.type='button';dot.className='front-slide-dot';dot.setAttribute('aria-label','Show school photo '+(index+1));
+      dot.addEventListener('click',function(){showSlide(index,true);});
+      dotsWrap.appendChild(dot);
+      const preload=new Image();preload.src=slide.src;
+    });
+    function swapPhoto(img,slide,fade){
+      if(fade)img.classList.add('is-changing');
+      const finish=function(){img.classList.remove('is-changing');};
+      img.addEventListener('load',finish,{once:true});
+      img.addEventListener('error',finish,{once:true});
+      img.src=slide.src;img.alt=slide.alt;
+      if(img.complete&&img.naturalWidth)finish();
+    }
+    function showSlide(index,fade){
+      activeSlide=(index+heroSlideshowImages.length)%heroSlideshowImages.length;
+      const mainSlide=heroSlideshowImages[activeSlide];
+      const smallSlide=heroSlideshowImages[(activeSlide+6)%heroSlideshowImages.length];
+      if(heroMainImage.getAttribute('src')!==mainSlide.src)swapPhoto(heroMainImage,mainSlide,fade);else heroMainImage.alt=mainSlide.alt;
+      if(heroSmallImage.getAttribute('src')!==smallSlide.src)swapPhoto(heroSmallImage,smallSlide,fade);else heroSmallImage.alt=smallSlide.alt;
+      if(photoTag)photoTag.textContent=mainSlide.tag;
+      if(photoTitle)photoTitle.textContent=mainSlide.title;
+      if(photoSubtitle)photoSubtitle.textContent=mainSlide.subtitle;
+      dotsWrap.querySelectorAll('.front-slide-dot').forEach(function(dot,dotIndex){
+        const selected=dotIndex===activeSlide;
+        dot.classList.toggle('active',selected);
+        if(selected)dot.setAttribute('aria-current','true');else dot.removeAttribute('aria-current');
+      });
+      controls.setAttribute('aria-label','Featured school photo '+(activeSlide+1)+' of '+heroSlideshowImages.length);
+    }
+    function stopSlideshow(){if(slideshowTimer){clearInterval(slideshowTimer);slideshowTimer=null;}}
+    function startSlideshow(){
+      stopSlideshow();
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      slideshowTimer=setInterval(function(){if(!document.hidden)showSlide(activeSlide+1,true);},5000);
+    }
+    controls.querySelector('[data-slide-prev]').addEventListener('click',function(){showSlide(activeSlide-1,true);startSlideshow();});
+    controls.querySelector('[data-slide-next]').addEventListener('click',function(){showSlide(activeSlide+1,true);startSlideshow();});
+    heroMainCard.addEventListener('mouseenter',stopSlideshow);
+    heroMainCard.addEventListener('mouseleave',startSlideshow);
+    heroMainCard.addEventListener('focusin',stopSlideshow);
+    heroMainCard.addEventListener('focusout',startSlideshow);
+    document.addEventListener('visibilitychange',function(){if(document.hidden)stopSlideshow();else startSlideshow();});
+    showSlide(0,false);startSlideshow();
+  }
+
   const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();window.addEventListener('error',()=>loader?.classList.add('done'));
 })();
