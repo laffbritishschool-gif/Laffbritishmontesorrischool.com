@@ -23,19 +23,20 @@
 
   function mountSharedHeader(){
     const oldHeader=document.querySelector('.site-header');
-    if(!oldHeader)return;
+    const insertionTarget=oldHeader||document.querySelector('main')||document.body.firstElementChild;
+    if(!insertionTarget)return;
     let topline=document.querySelector('.school-topline');
     if(!topline){
       topline=document.createElement('div');
       topline.className='school-topline';
-      oldHeader.parentNode.insertBefore(topline,oldHeader);
+      insertionTarget.parentNode.insertBefore(topline,insertionTarget);
     }
     topline.innerHTML='<span>LEARN <i>•</i> GROW <i>•</i> ACHIEVE</span><span>A caring school community for curious minds</span>';
     const links=navItems.map(function(item){
       const active=isActive(item.href);
       return '<a href="'+item.href+'"'+(active?' class="active" aria-current="page"':'')+'>'+item.label+'</a>';
     }).join('');
-    oldHeader.outerHTML=
+    const headerMarkup=
       '<header class="site-header shared-site-header">'+
         '<div class="site-header-inner">'+
           '<a class="brand" href="index.html" aria-label="Laff British Montessori School home">'+
@@ -49,6 +50,8 @@
           '</div>'+
         '</div>'+
       '</header>';
+    if(oldHeader)oldHeader.outerHTML=headerMarkup;
+    else insertionTarget.insertAdjacentHTML('beforebegin',headerMarkup);
   }
   mountSharedHeader();
 
