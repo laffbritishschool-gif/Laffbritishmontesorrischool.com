@@ -12,7 +12,7 @@
   const key = rawPath === '/index.html' ? '/' : rawPath.replace(/\.html$/i, '') || '/';
   const p = pages[key];
   if (!p) return;
-  const url = 'https://laffbritishmontessorischool.com' + (key === '/' ? '/' : key);
+  const url = 'https://laffbritishmontessorischool.com' + (key === '/' ? '/' : key + '/');
   document.title = p[0];
   const setMeta = (selector, attr, name, content) => {
     let el = document.head.querySelector(selector);
