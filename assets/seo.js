@@ -2,13 +2,14 @@
   const pages = {
     '/': ['Laff British Montessori School | Learning, Character & Confidence','Official website of Laff British Montessori School — a caring Montessori school community focused on learning, character, confidence and excellence.','WebSite'],
     '/index.html': ['Laff British Montessori School | Learning, Character & Confidence','Official website of Laff British Montessori School — a caring Montessori school community focused on learning, character, confidence and excellence.','WebSite'],
-    '/about.html': ['About Laff British Montessori School | Our Approach & Values','Learn about Laff British Montessori School, our Montessori-inspired approach, learning journey, values, care and commitment to children and families.','AboutPage'],
-    '/contact.html': ['Contact Laff British Montessori School | Enquiries & Visits','Contact Laff British Montessori School for school enquiries, visits, admissions information and connection with our school community.','ContactPage'],
-    '/gallery.html': ['School Gallery | Laff British Montessori School','Explore real school-life photographs from Laff British Montessori School, including classroom learning, early years, creativity, participation and care.','CollectionPage'],
-    '/news.html': ['News & Events | Laff British Montessori School','Read news and school updates from Laff British Montessori School, including learning, creativity, classroom progress, celebrations and community moments.','CollectionPage'],
-    '/result.html': ['Check Student Result | Laff British Montessori School','Use your school result serial number, PIN, academic session and term to check a published student result from Laff British Montessori School.','WebPage']
+    '/about': ['About Laff British Montessori School | Our Approach & Values','Learn about Laff British Montessori School, our Montessori-inspired approach, learning journey, values, care and commitment to children and families.','AboutPage'],
+    '/contact': ['Contact Laff British Montessori School | Enquiries & Visits','Contact Laff British Montessori School for school enquiries, visits, admissions information and connection with our school community.','ContactPage'],
+    '/gallery': ['School Gallery | Laff British Montessori School','Explore real school-life photographs from Laff British Montessori School, including classroom learning, early years, creativity, participation and care.','CollectionPage'],
+    '/news': ['News & Events | Laff British Montessori School','Read news and school updates from Laff British Montessori School, including learning, creativity, classroom progress, celebrations and community moments.','CollectionPage'],
+    '/result': ['Check Student Result | Laff British Montessori School','Use your school result serial number, PIN, academic session and term to check a published student result from Laff British Montessori School.','WebPage']
   };
-  const key = location.pathname.replace(/\/+$/, '') || '/';
+  const rawPath = location.pathname.replace(/\/+$/, '') || '/';
+  const key = rawPath === '/index.html' ? '/' : rawPath.replace(/\.html$/i, '') || '/';
   const p = pages[key];
   if (!p) return;
   const url = 'https://laffbritishmontessorischool.com' + (key === '/' ? '/' : key);
