@@ -32,7 +32,7 @@
     {label:'Contact',href:'/contact/'}
   ];
   const normalizePath=value=>{
-    const path=String(value||'/').replace(/\\.html$/i,'').replace(/\\/+$/,'');
+    const path=String(value||'/').replace(/\.html$/i,'').replace(/\/+$/,'');
     return path||'/';
   };
   const currentPath=normalizePath(location.pathname);
