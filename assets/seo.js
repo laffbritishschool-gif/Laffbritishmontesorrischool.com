@@ -31,11 +31,11 @@
   setMeta('meta[property="og:url"]','property','og:url',url);
   setMeta('meta[property="og:type"]','property','og:type','website');
   setMeta('meta[property="og:site_name"]','property','og:site_name','Laff British Montessori School');
-  setMeta('meta[property="og:image"]','property','og:image','https://i.ibb.co/whtP8S5v/image.png');
+  setMeta('meta[property="og:image"]','property','og:image','https://laffbritishmontessorischool.com/assets/school-logo.svg');
   setMeta('meta[name="twitter:card"]','name','twitter:card','summary');
   setMeta('meta[name="twitter:title"]','name','twitter:title',p[0]);
   setMeta('meta[name="twitter:description"]','name','twitter:description',p[1]);
-  setMeta('meta[name="twitter:image"]','name','twitter:image','https://i.ibb.co/whtP8S5v/image.png');
+  setMeta('meta[name="twitter:image"]','name','twitter:image','https://laffbritishmontessorischool.com/assets/school-logo.svg');
   let link = document.head.querySelector('link[rel="canonical"]');
   if (!link) {
     link = document.createElement('link');
@@ -44,7 +44,7 @@
   }
   link.href = url;
   const graph = [
-    {'@context':'https://schema.org','@type':'EducationalOrganization','name':'Laff British Montessori School','alternateName':'LAFF','url':'https://laffbritishmontessorischool.com/','logo':'https://i.ibb.co/whtP8S5v/image.png','description':'Laff British Montessori School is a caring school community focused on learning, character, confidence and excellence.'},
+    {'@context':'https://schema.org','@type':'EducationalOrganization','name':'Laff British Montessori School','alternateName':'LAFF','url':'https://laffbritishmontessorischool.com/','logo':'https://laffbritishmontessorischool.com/assets/school-logo.svg','description':'Laff British Montessori School is a caring school community focused on learning, character, confidence and excellence.'},
     {'@context':'https://schema.org','@type':p[2],'name':p[0],'url':url,'description':p[1],'isPartOf':{'@type':'WebSite','name':'Laff British Montessori School','url':'https://laffbritishmontessorischool.com/'}}
   ];
   let json = document.head.querySelector('script[data-seo-engine]');
