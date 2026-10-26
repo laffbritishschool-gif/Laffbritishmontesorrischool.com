@@ -21,7 +21,7 @@
     window.addEventListener('load',()=>setTimeout(finish,350),{once:true}); setTimeout(finish,5000);
   }
 
-  const portalUrl='https://student.laffbritishmontsorischool.com';
+  const portalUrl='https://student.laffbritishmontessorischool.com/student-login.html';
   const schoolLogo='/assets/school-logo.svg';
   const navItems=[
     {label:'Home',href:'/'},
