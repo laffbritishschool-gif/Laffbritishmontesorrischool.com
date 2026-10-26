@@ -22,7 +22,7 @@
   }
 
   const portalUrl='https://laff-british-school-student-portal-l8ty.onrender.com/';
-  const schoolLogo='https://raw.githubusercontent.com/laffbritishschool-gif/admin.html/main/assets/school-logo.svg';
+  const schoolLogo='https://i.ibb.co/whtP8S5v/image.png';
   const navItems=[
     {label:'Home',href:'/'},
     {label:'About',href:'/about/'},
