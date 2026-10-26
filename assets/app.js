@@ -23,6 +23,7 @@
 
   const portalUrl='https://student.laffbritishmontessorischool.com/student-login.html';
   const schoolLogo='/assets/school-logo.svg';
+  const schoolMark='/assets/green-mark.svg';
   const navItems=[
     {label:'Home',href:'/'},
     {label:'About',href:'/about/'},
@@ -60,7 +61,7 @@
       '<header class="site-header shared-site-header">'+
         '<div class="site-header-inner">'+
           '<a class="brand" href="/" aria-label="Laff British Montessori School home">'+
-            '<span class="brand-mark"><img src="'+schoolLogo+'" alt=""></span>'+
+            '<span class="brand-mark"><img src="'+schoolMark+'" alt=""></span>'+
             '<span class="brand-copy"><strong>LAFF BRITISH</strong><small>MONTESSORI SCHOOL</small></span>'+
           '</a>'+
           '<nav class="site-nav" aria-label="Main navigation">'+links+'</nav>'+
@@ -110,7 +111,7 @@
     const overlay=document.createElement('div');
     overlay.className='public-nav-overlay';
     overlay.id='public-nav-overlay';
-    overlay.innerHTML='<aside class="public-nav-drawer" aria-label="Mobile navigation"><button class="public-nav-close" type="button" aria-label="Close navigation">×</button><div class="drawer-brand"><img src="'+schoolLogo+'" alt=""><span>LAFF BRITISH<small>MONTESSORI SCHOOL</small></span></div><div class="drawer-links"></div><a class="drawer-portal" href="'+portalUrl+'" target="_blank" rel="noopener noreferrer">Open Student Portal ↗</a></aside>';
+    overlay.innerHTML='<aside class="public-nav-drawer" aria-label="Mobile navigation"><button class="public-nav-close" type="button" aria-label="Close navigation">×</button><div class="drawer-brand"><img src="'+schoolMark+'" alt=""><span>LAFF BRITISH<small>MONTESSORI SCHOOL</small></span></div><div class="drawer-links"></div><a class="drawer-portal" href="'+portalUrl+'" target="_blank" rel="noopener noreferrer">Open Student Portal ↗</a></aside>';
     document.body.appendChild(overlay);
     const links=overlay.querySelector('.drawer-links');
     nav.querySelectorAll('a').forEach(function(original){
