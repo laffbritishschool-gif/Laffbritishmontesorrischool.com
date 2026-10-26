@@ -21,8 +21,8 @@
     window.addEventListener('load',()=>setTimeout(finish,350),{once:true}); setTimeout(finish,5000);
   }
 
-  const portalUrl='https://laff-british-school-student-portal-l8ty.onrender.com/';
-  const schoolLogo='https://i.ibb.co/whtP8S5v/image.png';
+  const portalUrl='https://student.laffbritishmontsorischool.com';
+  const schoolLogo='/assets/school-logo.svg';
   const navItems=[
     {label:'Home',href:'/'},
     {label:'About',href:'/about/'},
