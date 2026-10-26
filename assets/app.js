@@ -1,4 +1,18 @@
 (() => {
+  const legacyRouteMap={
+    '/index.html':'/',
+    '/about.html':'/about/',
+    '/contact.html':'/contact/',
+    '/gallery.html':'/gallery/',
+    '/news.html':'/news/',
+    '/result.html':'/result/',
+    '/result-view.html':'/result-view/',
+    '/result-unavailable.html':'/result-unavailable/'
+  };
+  if(legacyRouteMap[location.pathname]){
+    location.replace(legacyRouteMap[location.pathname]+location.search+location.hash);
+    return;
+  }
   const loader=document.getElementById('site-loader'), loaderText=document.getElementById('loader-text');
   if(loader){
     const steps=['Creating the page…','Drawing the layout…','Loading school experience…','Adding the finishing touches…','Page ready ✓']; let i=0;
@@ -10,16 +24,22 @@
   const portalUrl='https://laff-british-school-student-portal-l8ty.onrender.com/';
   const schoolLogo='https://raw.githubusercontent.com/laffbritishschool-gif/admin.html/main/assets/school-logo.svg';
   const navItems=[
-    {label:'Home',href:'index.html'},
-    {label:'About',href:'about.html'},
-    {label:'Gallery',href:'gallery.html'},
-    {label:'News',href:'news.html'},
-    {label:'Check Result',href:'result.html'},
-    {label:'Contact',href:'contact.html'}
+    {label:'Home',href:'/'},
+    {label:'About',href:'/about/'},
+    {label:'Gallery',href:'/gallery/'},
+    {label:'News',href:'/news/'},
+    {label:'Check Result',href:'/result/'},
+    {label:'Contact',href:'/contact/'}
   ];
-  const currentPage=location.pathname.split('/').pop()||'index.html';
-  const resultPages=['result.html','result-view.html','result-unavailable.html'];
-  const isActive=href=>href===currentPage||(href==='result.html'&&resultPages.includes(currentPage));
+  const normalizePath=value=>{
+    const path=String(value||'/').replace(/\\.html$/i,'').replace(/\\/+$/,'');
+    return path||'/';
+  };
+  const currentPath=normalizePath(location.pathname);
+  const isActive=href=>{
+    const target=normalizePath(href);
+    return target===currentPath||(target==='/result'&&['/result','/result-view','/result-unavailable'].includes(currentPath));
+  };
 
   function mountSharedHeader(){
     const oldHeader=document.querySelector('.site-header');
@@ -39,7 +59,7 @@
     const headerMarkup=
       '<header class="site-header shared-site-header">'+
         '<div class="site-header-inner">'+
-          '<a class="brand" href="index.html" aria-label="Laff British Montessori School home">'+
+          '<a class="brand" href="/" aria-label="Laff British Montessori School home">'+
             '<span class="brand-mark"><img src="'+schoolLogo+'" alt=""></span>'+
             '<span class="brand-copy"><strong>LAFF BRITISH</strong><small>MONTESSORI SCHOOL</small></span>'+
           '</a>'+
@@ -122,7 +142,7 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
   }
 
-  if(document.querySelector('main')&&!document.querySelector('.public-access-strip')){const strip=document.createElement('section');strip.className='public-access-strip';strip.innerHTML=`<div><h2>Student access, made simple.</h2><p>Sign in to the private student portal or check published results online.</p></div><div class="actions"><a href="${portalUrl}" target="_blank" rel="noopener">🎓 Open Student Portal</a><a class="alt" href="result.html">▣ Check Result</a></div>`;document.querySelector('main').appendChild(strip);}
+  if(document.querySelector('main')&&!document.querySelector('.public-access-strip')){const strip=document.createElement('section');strip.className='public-access-strip';strip.innerHTML=`<div><h2>Student access, made simple.</h2><p>Sign in to the private student portal or check published results online.</p></div><div class="actions"><a href="${portalUrl}" target="_blank" rel="noopener">🎓 Open Student Portal</a><a class="alt" href="/result/">▣ Check Result</a></div>`;document.querySelector('main').appendChild(strip);}
 
   if(document.querySelector('.home-upgrade')&&!document.querySelector('.student-portal-modal')){
     const modal=document.createElement('div');
