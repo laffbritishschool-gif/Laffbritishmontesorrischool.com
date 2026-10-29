@@ -29,6 +29,7 @@
   details.innerHTML = [
     ['Student ID', student.student_id],
     ['Exam Number', student.exam_number || 'Not assigned'],
+    ['Class', student.class_name || student.class || student.class_level || '—'],
     ['Academic Session', data.session],
     ['Term', termLabel]
   ].map(([label, value]) =>
@@ -39,7 +40,7 @@
   const total = data.results.reduce((sum, result) => sum + Number(result.total || 0), 0);
   const points = data.results.reduce((sum, result) => sum + Number(result.grade_point || 0), 0);
   const average = resultCount ? total / resultCount : 0;
-  stats.innerHTML = `<div><span>Subjects</span><strong>${resultCount}</strong></div><div><span>Average Total</span><strong>${average.toFixed(1)}%</strong></div><div><span>Total Grade Points</span><strong>${points.toFixed(1)}</strong></div>`;
+  stats.innerHTML = `<div><span>Subjects</span><strong>${resultCount}</strong></div><div><span>Average Mark</span><strong>${average.toFixed(1)}%</strong></div><div><span>Total Grade Points</span><strong>${points.toFixed(1)}</strong></div>`;
 
   rows.innerHTML = data.results.map((result, index) => {
     const grade = escapeHtml(result.grade || '—');
