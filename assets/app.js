@@ -23,7 +23,7 @@
 
   const portalUrl='https://student.laffbritishmontessorischool.com/student-login.html';
   const schoolLogo='/assets/school-logo.svg';
-  const schoolMark='/assets/green-mark.svg';
+  
   const navItems=[
     {label:'Home',href:'/'},
     {label:'About',href:'/about/'},
@@ -61,7 +61,7 @@
       '<header class="site-header shared-site-header">'+
         '<div class="site-header-inner">'+
           '<a class="brand" href="/" aria-label="Laff British Montessori School home">'+
-            '<span class="brand-mark"><img src="'+schoolMark+'" alt=""></span>'+
+            '<span class="brand-mark"><img src="'+schoolLogo+'" alt=""></span>'+
             '<span class="brand-copy"><strong>LAFF BRITISH</strong><small>MONTESSORI SCHOOL</small></span>'+
           '</a>'+
           '<nav class="site-nav" aria-label="Main navigation">'+links+'</nav>'+
@@ -94,7 +94,7 @@
         '.public-nav-drawer{position:absolute;top:0;right:0;width:min(370px,90vw);height:100%;background:#fff;box-shadow:-18px 0 55px rgba(7,24,46,.2);transform:translateX(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);padding:88px 22px 28px;overflow-y:auto}',
         '.public-nav-overlay.open .public-nav-drawer{transform:translateX(0)}',
         '.public-nav-drawer .drawer-brand{display:flex;align-items:center;gap:12px;padding:0 6px 22px;margin-bottom:16px;border-bottom:1px solid #e6edf6;color:#10213a;font-weight:900;line-height:1.1}',
-        '.public-nav-drawer .drawer-brand img{width:44px;height:44px;border-radius:50%;object-fit:contain;padding:0;background:transparent;border:0;box-shadow:none}',
+        '.public-nav-drawer .drawer-brand img{width:48px;height:48px;border-radius:15px;object-fit:contain;padding:3px;background:#fff;border:1px solid #e2ebf5}',
         '.public-nav-drawer .drawer-brand span{display:grid;gap:3px}',
         '.public-nav-drawer .drawer-brand small{font-size:10px;font-weight:750;letter-spacing:.07em;color:#6e829a}',
         '.public-nav-drawer a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 15px;margin:5px 0;border-radius:13px;color:#254566;text-decoration:none;font-weight:800;transition:background .18s,color .18s}',
@@ -111,7 +111,7 @@
     const overlay=document.createElement('div');
     overlay.className='public-nav-overlay';
     overlay.id='public-nav-overlay';
-    overlay.innerHTML='<aside class="public-nav-drawer" aria-label="Mobile navigation"><button class="public-nav-close" type="button" aria-label="Close navigation">×</button><div class="drawer-brand"><img src="'+schoolMark+'" alt=""><span>LAFF BRITISH<small>MONTESSORI SCHOOL</small></span></div><div class="drawer-links"></div><a class="drawer-portal" href="'+portalUrl+'" target="_blank" rel="noopener noreferrer">Open Student Portal ↗</a></aside>';
+    overlay.innerHTML='<aside class="public-nav-drawer" aria-label="Mobile navigation"><button class="public-nav-close" type="button" aria-label="Close navigation">×</button><div class="drawer-brand"><img src="'+schoolLogo+'" alt=""><span>LAFF BRITISH<small>MONTESSORI SCHOOL</small></span></div><div class="drawer-links"></div><a class="drawer-portal" href="'+portalUrl+'" target="_blank" rel="noopener noreferrer">Open Student Portal ↗</a></aside>';
     document.body.appendChild(overlay);
     const links=overlay.querySelector('.drawer-links');
     nav.querySelectorAll('a').forEach(function(original){
