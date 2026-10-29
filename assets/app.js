@@ -145,7 +145,11 @@
 
   if(document.querySelector('main')&&!document.querySelector('.public-access-strip')){const strip=document.createElement('section');strip.className='public-access-strip';strip.innerHTML=`<div><h2>Student access, made simple.</h2><p>Sign in to the private student portal or check published results online.</p></div><div class="actions"><a href="${portalUrl}" target="_blank" rel="noopener">🎓 Open Student Portal</a><a class="alt" href="/result/">▣ Check Result</a></div>`;document.querySelector('main').appendChild(strip);}
 
-  if(document.querySelector('.home-upgrade')&&!document.querySelector('.student-portal-modal')){
+  if(document.querySelector('.front-page')&&!document.querySelector('.student-portal-modal')){
+    const portalPromptStorageKey='laffStudentPortalPromptSeen_v1';
+    const hasSeenPortalPrompt=()=>{try{return localStorage.getItem(portalPromptStorageKey)==='1';}catch(_){try{return sessionStorage.getItem(portalPromptStorageKey)==='1';}catch(__){return false;}}};
+    const markPortalPromptSeen=()=>{let saved=false;try{localStorage.setItem(portalPromptStorageKey,'1');saved=true;}catch(_){}if(!saved){try{sessionStorage.setItem(portalPromptStorageKey,'1');}catch(__){}}};
+    if(!hasSeenPortalPrompt()){
     const modal=document.createElement('div');
     modal.className='student-portal-modal';
     modal.setAttribute('role','dialog');
@@ -173,15 +177,17 @@
       </div>
     </div>`;
     document.body.appendChild(modal);
-    const closePortal=()=>{modal.classList.remove('open');document.body.classList.remove('portal-modal-open');};
-    const openPortal=()=>{modal.classList.add('open');document.body.classList.add('portal-modal-open');setTimeout(()=>modal.querySelector('.student-portal-close')?.focus(),120);};
+    const closePortal=()=>{markPortalPromptSeen();modal.classList.remove('open');document.body.classList.remove('portal-modal-open');};
+    const openPortal=()=>{markPortalPromptSeen();modal.classList.add('open');document.body.classList.add('portal-modal-open');setTimeout(()=>modal.querySelector('.student-portal-close')?.focus(),120);};
     modal.querySelector('.student-portal-close').addEventListener('click',closePortal);
     modal.querySelector('.student-portal-continue').addEventListener('click',closePortal);
     modal.addEventListener('click',e=>{if(e.target===modal)closePortal();});
-    modal.querySelector('.student-portal-visit').addEventListener('click',()=>setTimeout(closePortal,0));
+    modal.querySelector('.student-portal-visit').addEventListener('click',()=>{markPortalPromptSeen();setTimeout(closePortal,0);});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closePortal();});
-    const launch=()=>{if(window.__studentPortalPromptShown)return;window.__studentPortalPromptShown=true;setTimeout(openPortal,750);};
+    const launch=()=>{if(window.__studentPortalPromptShown)return;window.__studentPortalPromptShown=true;markPortalPromptSeen();setTimeout(openPortal,750);};
     if(document.readyState==='complete')launch();else window.addEventListener('load',launch,{once:true});
+  }
+    }
   }
 
   document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto:')||href.startsWith('tel:')||a.target==='_blank')return;a.addEventListener('click',e=>{if(e.defaultPrevented)return;e.preventDefault();document.body.classList.add('page-leaving');setTimeout(()=>location.href=href,160);});});
