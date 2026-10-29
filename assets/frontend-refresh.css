@@ -395,3 +395,87 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand-blue)}
   color:transparent!important;font-size:0!important;
   box-shadow:0 0 0 5px rgba(32,165,106,.12)!important;
 }
+
+
+/* First-visit student portal welcome prompt */
+.student-portal-modal{
+  position:fixed;inset:0;z-index:9999;display:grid;place-items:center;
+  padding:22px;background:rgba(4,20,44,.62);backdrop-filter:blur(8px);
+  opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease;
+}
+.student-portal-modal.open{opacity:1;visibility:visible}
+body.portal-modal-open{overflow:hidden}
+.student-portal-card{
+  position:relative;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);
+  width:min(860px,100%);max-height:calc(100vh - 44px);overflow:auto;
+  background:#fff;border:1px solid rgba(255,255,255,.7);border-radius:28px;
+  box-shadow:0 32px 100px rgba(0,16,40,.28);transform:translateY(12px) scale(.99);
+  transition:transform .22s ease;
+}
+.student-portal-modal.open .student-portal-card{transform:translateY(0) scale(1)}
+.student-portal-close{
+  position:absolute;top:13px;right:13px;z-index:3;display:grid;place-items:center;
+  width:40px;height:40px;border:1px solid #e0e9f4;border-radius:50%;
+  background:rgba(255,255,255,.96);color:#12345a;font-size:25px;line-height:1;cursor:pointer;
+  box-shadow:0 5px 18px rgba(8,42,84,.1)
+}
+.student-portal-preview{
+  display:flex;flex-direction:column;justify-content:space-between;gap:26px;
+  min-width:0;padding:38px 30px 30px;
+  background:radial-gradient(circle at 5% 0%,rgba(255,210,28,.23),transparent 34%),
+    linear-gradient(145deg,#062c62 0%,#0757b8 72%,#1682c7 100%);
+  color:#fff;overflow:hidden;position:relative;
+}
+.student-portal-preview:after{
+  content:"";position:absolute;width:230px;height:230px;right:-100px;bottom:-105px;
+  border:1px solid rgba(255,255,255,.2);border-radius:50%;
+  box-shadow:0 0 0 24px rgba(255,255,255,.035),0 0 0 52px rgba(255,255,255,.025);pointer-events:none
+}
+.student-portal-topline{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;justify-content:space-between;font-size:.68rem;font-weight:800;letter-spacing:.04em;color:rgba(255,255,255,.76)}
+.student-portal-topline span:last-child{padding:5px 8px;border:1px solid rgba(255,255,255,.22);border-radius:99px;color:#fff}
+.student-portal-preview-main{display:flex;align-items:center;gap:15px;position:relative;z-index:1}
+.student-portal-logo{display:grid;place-items:center;flex:0 0 68px;width:68px;height:68px;padding:7px;border:1px solid rgba(255,255,255,.65);border-radius:20px;background:#fff;box-shadow:0 12px 25px rgba(0,18,45,.15)}
+.student-portal-logo img{width:100%;height:100%;object-fit:contain}
+.student-portal-preview-main>div:last-child{display:grid;gap:5px}
+.student-portal-preview-main small{font-size:.62rem;font-weight:900;letter-spacing:.13em;color:#ffe47b}
+.student-portal-preview-main strong{font-size:clamp(1.55rem,3vw,2.15rem);line-height:1.05;letter-spacing:-.045em}
+.student-portal-preview-main span{font-size:.78rem;line-height:1.55;color:rgba(255,255,255,.79)}
+.student-portal-ui{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;position:relative;z-index:1}
+.student-portal-ui span{display:grid;gap:9px;min-width:0;padding:11px 9px;border:1px solid rgba(255,255,255,.19);border-radius:13px;background:rgba(255,255,255,.08);font-size:.68rem;font-weight:800;color:rgba(255,255,255,.94)}
+.student-portal-ui i{display:grid;place-items:center;width:27px;height:27px;border-radius:9px;background:#fff;color:#0757b8;font-size:.66rem;font-style:normal;font-weight:950}
+.student-portal-visit-label{position:relative;z-index:1;font-size:.65rem;font-weight:950;letter-spacing:.12em;color:#fff}
+.student-portal-copy{align-self:center;padding:48px clamp(25px,4vw,42px) 38px}
+.student-portal-kicker{display:inline-flex;align-items:center;gap:8px;margin-bottom:15px;color:#168653;font-size:.68rem;font-weight:950;letter-spacing:.12em;text-transform:uppercase}
+.student-portal-kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:#20a56a;box-shadow:0 0 0 5px rgba(32,165,106,.12)}
+.student-portal-copy h2{margin:0 0 14px;color:#082f67;font-size:clamp(2rem,4vw,2.8rem);font-weight:950;line-height:1.04;letter-spacing:-.065em}
+.student-portal-copy h2 em{display:block;margin-top:4px;color:#0757b8;font-style:normal}
+.student-portal-copy p{margin:0;color:#60748c;font-size:.94rem;line-height:1.8}
+.student-portal-actions{display:grid;gap:10px;margin-top:26px}
+.student-portal-visit,.student-portal-continue{
+  display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:49px;padding:13px 17px;
+  border-radius:13px;font-size:.86rem;font-weight:900;text-align:center;text-decoration:none;cursor:pointer;
+  transition:transform .18s,background .18s,box-shadow .18s
+}
+.student-portal-visit{border:1px solid #0757b8;background:#0757b8;color:#fff!important;box-shadow:0 10px 22px rgba(7,87,184,.18)}
+.student-portal-visit:hover{background:#064a9c;box-shadow:0 13px 25px rgba(7,87,184,.24);transform:translateY(-1px)}
+.student-portal-continue{border:1px solid #dce7f3;background:#fff;color:#2b4869}
+.student-portal-continue:hover{background:#f3f8ff}
+.student-portal-close:focus-visible,.student-portal-visit:focus-visible,.student-portal-continue:focus-visible{outline:3px solid rgba(7,87,184,.35);outline-offset:3px}
+@media(max-width:650px){
+  .student-portal-modal{padding:12px}
+  .student-portal-card{grid-template-columns:1fr;max-height:calc(100vh - 24px);border-radius:22px}
+  .student-portal-preview{gap:18px;padding:22px 22px 19px}
+  .student-portal-preview-main{gap:12px}
+  .student-portal-logo{width:54px;height:54px;flex-basis:54px;border-radius:16px}
+  .student-portal-preview-main strong{font-size:1.55rem}
+  .student-portal-preview-main span{font-size:.7rem}
+  .student-portal-ui{display:none}
+  .student-portal-visit-label{font-size:.58rem}
+  .student-portal-copy{padding:27px 23px 24px}
+  .student-portal-copy h2{font-size:2.15rem;max-width:320px}
+  .student-portal-copy p{font-size:.87rem}
+  .student-portal-actions{margin-top:20px}
+}
+@media(prefers-reduced-motion:reduce){
+  .student-portal-modal,.student-portal-card,.student-portal-visit,.student-portal-continue{transition:none!important}
+}
