@@ -272,10 +272,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand-blue)}
 }
 @media(prefers-reduced-motion:reduce){.front-photo-main img,.front-photo-small img,.front-slide-arrow,.front-slide-dot{transition:none!important}}
 
-/* Green circle brand mark shared across the public website */
-.site-header.shared-site-header .brand-mark{border-radius:50%!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
-.site-header.shared-site-header .brand-mark img{border-radius:50%!important}
-.public-nav-drawer .drawer-brand img{border-radius:50%!important;object-fit:contain!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+/* Header keeps the school crest; green-mark.svg is only used for body indicators. */
 
 
 /* Restore the real school logo in the shared header; green-mark is for body icons only. */
