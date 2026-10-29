@@ -93,3 +93,14 @@
 @media(max-width:460px){
   .student-details{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+
+/* Academic session picker: select the current school year automatically. */
+.result-form-card .field-help{
+  display:block;
+  margin-top:1px;
+  color:#74859a;
+  font-size:.71rem;
+  font-weight:600;
+  line-height:1.5;
+}
