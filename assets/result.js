@@ -15,7 +15,8 @@
     student: {
       name: 'Sample Learner (DEMO ONLY)',
       student_id: 'DEMO-0001',
-      exam_number: 'DEMO-2025-001'
+      exam_number: 'DEMO-2025-001',
+      class_name: 'Primary 4'
     },
     results: [
       { subject: 'English Language', code: 'ENG', ca: 27, exam: 59, total: 86, grade: 'A', grade_point: 5, teacher_remark: 'Excellent' },
