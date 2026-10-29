@@ -356,3 +356,42 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand-blue)}
 @media(max-width:520px){
   .front-floating-icon:before,.front-quick-icon:before{font-size:1.12rem!important}
 }
+
+
+/* Restore the homepage's original icons in the three highlighted areas. */
+/* The quick cards keep their own glyphs: flower, diamond, arrow and heart. */
+.front-quick-icon{
+  border-radius:14px!important;
+  background:#eef6ff!important;
+  border:0!important;
+  color:#0757b8!important;
+  font-size:1.22rem!important;
+  font-weight:500!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.front-quick-icon:before{content:none!important;display:none!important}
+
+/* The floating note keeps its original sparkle on the warm yellow tile. */
+.front-floating-icon{
+  border-radius:14px!important;
+  background:#fff3b9!important;
+  border:0!important;
+  color:#745300!important;
+  font-size:1.35rem!important;
+  font-weight:500!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.front-floating-icon:before{content:none!important;display:none!important}
+
+/* The welcome label uses its original small green dot, not a check symbol. */
+.front-eyebrow:before{
+  content:""!important;
+  display:inline-block!important;
+  width:8px!important;height:8px!important;flex:0 0 8px!important;
+  border-radius:50%!important;
+  background:#20a56a!important;
+  color:transparent!important;font-size:0!important;
+  box-shadow:0 0 0 5px rgba(32,165,106,.12)!important;
+}
