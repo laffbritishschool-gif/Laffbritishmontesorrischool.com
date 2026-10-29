@@ -314,3 +314,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand-blue)}
   border-radius:50%!important;background:#eaf7ef url('/assets/green-mark.svg') center/contain no-repeat!important;
   color:transparent!important;font-size:0!important;border:0!important
 }
+
+/* Keep the result-unavailable alert visible while using the same green circle mark style. */
+.unavailable-icon{
+  background:#eaf7ef url('/assets/green-mark.svg') center/contain no-repeat!important;
+  border:0!important;border-radius:50%!important;color:#1c6844!important
+}
