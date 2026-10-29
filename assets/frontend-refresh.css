@@ -320,3 +320,39 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand-blue)}
   background:#eaf7ef url('/assets/green-mark.svg') center/contain no-repeat!important;
   border:0!important;border-radius:50%!important;color:#1c6844!important
 }
+
+
+/* Homepage icon correction: use real check marks, not the decorative green-mark image. */
+/* This upgrade is limited to homepage indicators. The school crest and result/about-page icons are unchanged. */
+.front-eyebrow:before{
+  content:"✓"!important;display:grid!important;place-items:center!important;
+  width:16px!important;height:16px!important;flex:0 0 16px!important;
+  border-radius:50%!important;background:#198754!important;color:#fff!important;
+  font-size:10px!important;font-weight:950!important;line-height:1!important;
+  box-shadow:none!important;
+}
+.front-hero-note span:before{
+  content:"✓"!important;display:grid!important;place-items:center!important;
+  flex:0 0 19px!important;width:19px!important;height:19px!important;
+  border-radius:50%!important;background:#e6f7ed!important;
+  color:#147b4b!important;font-size:.76rem!important;font-weight:950!important;
+  line-height:1!important;box-shadow:inset 0 0 0 1px #c6ead3!important;
+}
+.front-floating-icon,
+.front-quick-icon{
+  position:relative!important;display:grid!important;place-items:center!important;
+  border-radius:50%!important;background:#e6f7ed!important;
+  border:1px solid #c6ead3!important;color:transparent!important;
+  font-size:0!important;box-shadow:none!important;overflow:hidden!important;
+}
+.front-floating-icon:before,
+.front-quick-icon:before{
+  content:"✓"!important;display:grid!important;place-items:center!important;
+  width:100%!important;height:100%!important;border-radius:inherit!important;
+  background:transparent!important;color:#147b4b!important;
+  font-size:1.28rem!important;font-weight:950!important;line-height:1!important;
+}
+.front-floating-icon:before{font-size:1.35rem!important}
+@media(max-width:520px){
+  .front-floating-icon:before,.front-quick-icon:before{font-size:1.12rem!important}
+}
