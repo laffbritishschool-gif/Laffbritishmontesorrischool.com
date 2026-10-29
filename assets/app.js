@@ -186,7 +186,6 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closePortal();});
     const launch=()=>{if(window.__studentPortalPromptShown)return;window.__studentPortalPromptShown=true;markPortalPromptSeen();setTimeout(openPortal,750);};
     if(document.readyState==='complete')launch();else window.addEventListener('load',launch,{once:true});
-  }
     }
   }
 
