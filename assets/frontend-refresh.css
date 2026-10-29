@@ -276,3 +276,44 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand-blue)}
 .site-header.shared-site-header .brand-mark{border-radius:50%!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
 .site-header.shared-site-header .brand-mark img{border-radius:50%!important}
 .public-nav-drawer .drawer-brand img{border-radius:50%!important;object-fit:contain!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+
+
+/* Restore the real school logo in the shared header; green-mark is for body icons only. */
+.site-header.shared-site-header .brand-mark{
+  display:grid!important;place-items:center!important;width:52px!important;height:52px!important;flex:0 0 52px!important;
+  padding:5px!important;border:1px solid #e4ebf4!important;border-radius:17px!important;background:#fff!important;
+  box-shadow:0 5px 16px rgba(7,57,115,.08)!important;overflow:hidden!important
+}
+.site-header.shared-site-header .brand-mark img{
+  display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
+  border:0!important;border-radius:11px!important;padding:0!important;background:transparent!important;box-shadow:none!important
+}
+.site-header.shared-site-header .brand:after{display:none!important;content:none!important}
+@media(max-width:1180px){.site-header.shared-site-header .brand-mark{width:47px!important;height:47px!important;flex-basis:47px!important}}
+@media(max-width:520px){.site-header.shared-site-header .brand-mark{width:43px!important;height:43px!important;flex-basis:43px!important;border-radius:14px!important}}
+
+/* Green circle marks are applied only to small icons inside page content, never to logos or favicons. */
+.front-floating-icon,
+.front-quick-icon{
+  display:grid!important;place-items:center!important;border-radius:50%!important;
+  background:#eaf7ef url('/assets/green-mark.svg') center/contain no-repeat!important;
+  color:transparent!important;font-size:0!important;border:0!important;box-shadow:none!important;overflow:hidden!important
+}
+.front-hero-note span:before{
+  content:""!important;display:inline-block!important;flex:0 0 19px!important;width:19px!important;height:19px!important;
+  border-radius:50%!important;background:transparent url('/assets/green-mark.svg') center/contain no-repeat!important;
+  color:transparent!important;box-shadow:none!important
+}
+.front-eyebrow:before{
+  background:transparent url('/assets/green-mark.svg') center/contain no-repeat!important;box-shadow:none!important
+}
+.about-list span{
+  display:inline-block!important;vertical-align:middle!important;width:18px!important;height:18px!important;margin-right:10px!important;
+  overflow:hidden!important;background:transparent url('/assets/green-mark.svg') center/contain no-repeat!important;
+  color:transparent!important;font-size:0!important
+}
+.result-mark{
+  display:grid!important;place-items:center!important;width:48px!important;height:48px!important;
+  border-radius:50%!important;background:#eaf7ef url('/assets/green-mark.svg') center/contain no-repeat!important;
+  color:transparent!important;font-size:0!important;border:0!important
+}
