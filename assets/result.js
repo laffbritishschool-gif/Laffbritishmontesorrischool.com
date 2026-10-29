@@ -6,6 +6,31 @@
   const message = document.getElementById('result-message');
   const submit = form && form.querySelector('.result-submit');
 
+  const sessionSelect = document.getElementById('session');
+
+  // School sessions are September-to-August and advance automatically each year.
+  function populateAcademicSessions() {
+    if (!sessionSelect) return;
+
+    const today = new Date();
+    const currentStartYear = today.getFullYear() - (today.getMonth() < 8 ? 1 : 0);
+    const currentSession = currentStartYear + '/' + (currentStartYear + 1);
+    const options = document.createDocumentFragment();
+
+    for (let offset = 0; offset < 10; offset += 1) {
+      const startYear = currentStartYear - offset;
+      const value = startYear + '/' + (startYear + 1);
+      const label = value === currentSession ? value + ' (Current session)' : value;
+      options.appendChild(new Option(label, value, false, value === currentSession));
+    }
+
+    sessionSelect.replaceChildren(options);
+    sessionSelect.value = currentSession;
+  }
+
+  populateAcademicSessions();
+
+
   function setMessage(text, state) {
     if (!message) return;
     message.textContent = text;
