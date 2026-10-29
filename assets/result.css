@@ -17,20 +17,9 @@
 .result-message{min-height:24px;margin:0;font-size:.83rem;line-height:1.55}
 .result-message.error{padding:10px 12px;border-radius:10px;background:#fff1f0;color:#a62b26;border:1px solid #ffd8d4}
 .result-message.loading{color:#0757b8;font-weight:750}
-.result-demo-card{margin-top:23px;padding:20px;border:1px dashed #a9c8ee;border-radius:18px;background:linear-gradient(145deg,#f7fbff,#fffdf2)}
-.result-demo-pill{display:inline-flex;align-items:center;gap:6px;margin-bottom:9px;padding:5px 9px;border:1px solid #d6e8fb;border-radius:999px;background:#eaf3ff;color:#0757b8;font-size:.65rem;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
-.result-demo-card h3{margin:0 0 6px;color:#102f5e;font-size:1.08rem;letter-spacing:-.02em}
-.result-demo-card>p{margin:0 0 15px;color:#63778f;font-size:.8rem;line-height:1.65}
-.result-demo-credentials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:16px}
-.result-demo-credentials>div{min-width:0;padding:10px;border:1px solid #e4ecf6;border-radius:11px;background:#fff}
-.result-demo-credentials small{display:block;color:#78899d;font-size:.61rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
-.result-demo-credentials code{display:block;margin-top:3px;color:#183b66;font-size:.76rem;font-weight:850;overflow-wrap:anywhere}
-.result-demo-card button{width:100%;min-height:45px;border-radius:12px!important}
-.result-demo-card .btn.ghost{border-color:#d5e3f4!important;background:#fff!important;color:#0757b8!important}
-.result-demo-card button:hover{background:#eef6ff!important}
 .result-info-card .result-help{border-top:1px solid #e6edf6;margin-top:20px;padding-top:18px}
 
-/* Report card is responsive, print-ready and visibly marked when using demo data. */
+/* Public result report: responsive and print-ready. */
 .result-sheet-page{background:linear-gradient(145deg,#f2f7fd,#fff 70%);padding:38px 16px 72px}
 .result-sheet{position:relative;max-width:1120px;border:1px solid #dbe6f2;border-radius:22px;overflow:hidden;padding:clamp(18px,3vw,36px);box-shadow:0 22px 70px rgba(16,42,79,.12)}
 .result-school-head{gap:20px;border-bottom:3px solid #ffd21c}
@@ -57,11 +46,6 @@
 .result-footer{align-items:center;flex-wrap:wrap}
 .result-footer-actions{display:flex;flex-wrap:wrap;gap:9px}
 .result-footer-actions .btn{min-height:42px;border-radius:11px!important}
-.sample-result-banner{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 0 20px;padding:12px 15px;border:1px solid #f2c2bb;border-radius:12px;background:#fff0ed;color:#9f2f26;font-size:.75rem;font-weight:950;letter-spacing:.06em;text-align:center}
-.sample-result-banner[hidden]{display:none!important}
-.result-sheet.is-demo:after{content:"SAMPLE • NOT OFFICIAL";position:fixed;top:44%;left:5%;transform:rotate(-24deg);z-index:9;pointer-events:none;white-space:nowrap;font-size:clamp(2rem,7vw,5.6rem);font-weight:1000;letter-spacing:.04em;color:rgba(177,38,31,.13)}
-.result-sheet.is-demo .result-school-head{border-bottom-color:#eaa59c}
-.demo-result .result-title>span{background:#fff0ed;color:#a32f25}
 @media(max-width:760px){
   .student-details{grid-template-columns:repeat(2,minmax(0,1fr))}
   .student-details div:nth-child(4n){border-right:1px solid #e0e7ef}
@@ -72,9 +56,7 @@
   .result-footer{align-items:stretch}
   .result-footer-actions{width:100%}
   .result-footer-actions .btn{flex:1}
-  .result-demo-card{padding:16px}
-  .result-demo-credentials code{font-size:.7rem}
-}
+  }
 @media(max-width:460px){
   .result-sheet-page{padding:18px 9px 40px}
   .result-sheet{padding:15px;border-radius:16px}
@@ -87,19 +69,15 @@
   .result-stats{gap:8px}
   .result-stats div{padding:11px}
   .result-stats strong{font-size:1.28rem}
-  .result-demo-credentials{gap:7px}
-}
+  }
 @media print{
-  body.demo-result{background:#fff!important}
   .result-sheet-page{padding:0!important;background:#fff!important}
   .result-sheet{max-width:none!important;border:0!important;border-radius:0!important;padding:0!important;box-shadow:none!important;overflow:visible!important}
-  .sample-result-banner{border-radius:0!important;margin-bottom:8px!important}
   .result-school-head img{border:0!important}
   .result-sheet table{min-width:0!important;width:100%!important;font-size:9px!important}
   .result-sheet th,.result-sheet td{padding:6px 4px!important}
   .result-footer-actions,.no-print{display:none!important}
-  .result-sheet.is-demo:after{position:fixed;top:42%;left:2%;font-size:48px!important;color:rgba(177,38,31,.16)!important}
-}
+  }
 @media(prefers-reduced-motion:reduce){.result-card,.result-form-card input,.result-form-card select{transition:none!important}}
 
 
