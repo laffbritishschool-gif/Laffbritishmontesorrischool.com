@@ -45,11 +45,22 @@
   const total = data.results.reduce(function (sum, result) { return sum + Number(result.total || 0); }, 0);
   const points = data.results.reduce(function (sum, result) { return sum + Number(result.grade_point || 0); }, 0);
   const average = resultCount ? total / resultCount : 0;
+  const positions = data.results.map(function (result) { return Number(result.position || 0); }).filter(Boolean);
+  const position = positions.length ? Math.min.apply(null, positions) : null;
+  const overallGrade = average >= 70 ? 'A' : average >= 60 ? 'B' : average >= 50 ? 'C' : average >= 45 ? 'D' : average >= 40 ? 'E' : 'F';
+  function ordinal(value) {
+    const n = Number(value), lastTwo = n % 100;
+    const suffix = lastTwo >= 11 && lastTwo <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th');
+    return n + suffix;
+  }
 
   stats.innerHTML =
     '<div><span>Subjects</span><strong>' + resultCount + '</strong></div>' +
+    '<div><span>Total Score</span><strong>' + total.toFixed(1) + '</strong></div>' +
     '<div><span>Average Mark</span><strong>' + average.toFixed(1) + '%</strong></div>' +
-    '<div><span>Total Grade Points</span><strong>' + points.toFixed(1) + '</strong></div>';
+    '<div><span>Overall Grade</span><strong>' + overallGrade + '</strong></div>' +
+    '<div><span>Total Grade Points</span><strong>' + points.toFixed(1) + '</strong></div>' +
+    '<div><span>Class Position</span><strong>' + (position ? ordinal(position) : '—') + '</strong></div>';
 
   rows.innerHTML = data.results.map(function (result, index) {
     const grade = escapeHtml(result.grade || '—');

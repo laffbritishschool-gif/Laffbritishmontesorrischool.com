@@ -104,3 +104,15 @@
   font-weight:600;
   line-height:1.5;
 }
+
+
+/* Shared result report palette and six-metric summary. */
+.result-sheet-page{--result-navy:#062c62;--result-blue:#0757b8;--result-gold:#ffd21c}
+.result-school-head{border-color:var(--result-gold)}
+.result-school-head h1,.result-stats strong{color:var(--result-navy)}
+.result-school-head p,.result-title>span{color:var(--result-blue)}
+.result-sheet th{background:var(--result-navy)}
+.result-stats{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:1000px){.result-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.result-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.result-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
