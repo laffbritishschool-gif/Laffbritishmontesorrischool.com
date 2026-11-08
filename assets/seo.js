@@ -4,7 +4,7 @@
   const SCHOOL = 'Laff British Montessori School';
   const LOGO = SITE + '/assets/school-logo.svg';
   const pages = {
-    '/': { title: 'Laff British Montessori School | Montessori Learning in Nigeria', description: 'Discover Laff British Montessori School, a caring learning community supporting children through early years and primary education, practical learning and positive character.', type: 'WebPage', section: 'Home' },
+    '/': { title: 'Laff British Montessori School | Learning, Character & Confidence', description: 'Discover Laff British Montessori School, a caring learning community supporting children through early years and primary education, practical learning and positive character.', type: 'WebPage', section: 'Home' },
     '/about': { title: 'About Laff British Montessori School | Our Approach & Values', description: 'Meet Laff British Montessori School. Explore our Montessori-inspired learning approach, early years and primary programmes, school values, child wellbeing and partnership with families.', type: 'AboutPage', section: 'About' },
     '/gallery': { title: 'School Gallery | Laff British Montessori School', description: 'Explore photographs of learning at Laff British Montessori School, from early-years discovery and classroom activities to creativity, participation and school community life.', type: 'CollectionPage', section: 'Gallery' },
     '/news': { title: 'School News & Events | Laff British Montessori School', description: 'Read school news and community updates from Laff British Montessori School, including classroom learning, creativity, celebrations and important school moments.', type: 'CollectionPage', section: 'News & Events' },
