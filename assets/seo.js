@@ -1,58 +1,63 @@
 (() => {
+  'use strict';
+  const SITE = 'https://laffbritishmontessorischool.com';
+  const SCHOOL = 'Laff British Montessori School';
+  const LOGO = SITE + '/assets/school-logo.svg';
   const pages = {
-    '/': ['Laff British Montessori School | Learning, Character & Confidence','Official website of Laff British Montessori School — a caring Montessori school community focused on learning, character, confidence and excellence.','WebSite'],
-    '/index.html': ['Laff British Montessori School | Learning, Character & Confidence','Official website of Laff British Montessori School — a caring Montessori school community focused on learning, character, confidence and excellence.','WebSite'],
-    '/about': ['About Laff British Montessori School | Our Approach & Values','Learn about Laff British Montessori School, our Montessori-inspired approach, learning journey, values, care and commitment to children and families.','AboutPage'],
-    '/contact': ['Contact Laff British Montessori School | Enquiries & Visits','Contact Laff British Montessori School for school enquiries, visits, admissions information and connection with our school community.','ContactPage'],
-    '/gallery': ['School Gallery | Laff British Montessori School','Explore real school-life photographs from Laff British Montessori School, including classroom learning, early years, creativity, participation and care.','CollectionPage'],
-    '/news': ['News & Events | Laff British Montessori School','Read news and school updates from Laff British Montessori School, including learning, creativity, classroom progress, celebrations and community moments.','CollectionPage'],
-    '/result': ['Check Student Result | Laff British Montessori School','Use your school result serial number, PIN, academic session and term to check a published student result from Laff British Montessori School.','WebPage']
+    '/': { title: 'Laff British Montessori School | Montessori Learning in Nigeria', description: 'Discover Laff British Montessori School, a caring learning community supporting children through early years and primary education, practical learning and positive character.', type: 'WebPage', section: 'Home' },
+    '/about': { title: 'About Laff British Montessori School | Our Approach & Values', description: 'Meet Laff British Montessori School. Explore our Montessori-inspired learning approach, early years and primary programmes, school values, child wellbeing and partnership with families.', type: 'AboutPage', section: 'About' },
+    '/gallery': { title: 'School Gallery | Laff British Montessori School', description: 'Explore photographs of learning at Laff British Montessori School, from early-years discovery and classroom activities to creativity, participation and school community life.', type: 'CollectionPage', section: 'Gallery' },
+    '/news': { title: 'School News & Events | Laff British Montessori School', description: 'Read school news and community updates from Laff British Montessori School, including classroom learning, creativity, celebrations and important school moments.', type: 'CollectionPage', section: 'News & Events' },
+    '/contact': { title: 'Contact Laff British Montessori School | School Enquiries', description: 'Contact Laff British Montessori School for general enquiries, admissions information, school visits and questions about our learning community.', type: 'ContactPage', section: 'Contact' },
+    '/result': { title: 'Check Student Result | Laff British Montessori School', description: 'Access the Laff British Montessori School result portal with the result serial number and PIN supplied by the school. Select the correct academic session and term.', type: 'WebPage', section: 'Student Results' }
   };
-  const rawPath = location.pathname.replace(/\/+$/, '') || '/';
-  const key = rawPath === '/index.html' ? '/' : rawPath.replace(/\.html$/i, '') || '/';
-  const p = pages[key];
-  if (!p) return;
-  const url = 'https://laffbritishmontessorischool.com' + (key === '/' ? '/' : key + '/');
-  document.title = p[0];
-  const setMeta = (selector, attr, name, content) => {
-    let el = document.head.querySelector(selector);
-    if (!el) {
-      el = document.createElement('meta');
-      el.setAttribute(attr, name);
-      document.head.appendChild(el);
+  const cleanPath = (location.pathname || '/').replace(/\\/g, '/').replace(/\/+$/, '') || '/';
+  const path = cleanPath === '/index.html' ? '/' : cleanPath.replace(/\.html$/i, '') || '/';
+  const page = pages[path];
+  if (!page) return;
+  const canonical = SITE + (path === '/' ? '/' : path + '/');
+  const setMeta = (selector, attribute, key, value) => {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+      element = document.createElement('meta');
+      element.setAttribute(attribute, key);
+      document.head.appendChild(element);
     }
-    el.setAttribute('content', content);
+    element.setAttribute('content', value);
   };
-  setMeta('meta[name="description"]','name','description',p[1]);
-  setMeta('meta[name="robots"]','name','robots','index,follow');
-  setMeta('meta[name="author"]','name','author','Laff British Montessori School');
-  setMeta('meta[property="og:title"]','property','og:title',p[0]);
-  setMeta('meta[property="og:description"]','property','og:description',p[1]);
-  setMeta('meta[property="og:url"]','property','og:url',url);
-  setMeta('meta[property="og:type"]','property','og:type','website');
-  setMeta('meta[property="og:site_name"]','property','og:site_name','Laff British Montessori School');
-  setMeta('meta[property="og:image"]','property','og:image','https://laffbritishmontessorischool.com/assets/school-logo.svg');
-  setMeta('meta[name="twitter:card"]','name','twitter:card','summary');
-  setMeta('meta[name="twitter:title"]','name','twitter:title',p[0]);
-  setMeta('meta[name="twitter:description"]','name','twitter:description',p[1]);
-  setMeta('meta[name="twitter:image"]','name','twitter:image','https://laffbritishmontessorischool.com/assets/school-logo.svg');
-  let link = document.head.querySelector('link[rel="canonical"]');
-  if (!link) {
-    link = document.createElement('link');
-    link.rel = 'canonical';
-    document.head.appendChild(link);
+  document.title = page.title;
+  setMeta('meta[name="description"]', 'name', 'description', page.description);
+  setMeta('meta[name="robots"]', 'name', 'robots', 'index,follow,max-image-preview:large');
+  setMeta('meta[name="author"]', 'name', 'author', SCHOOL);
+  setMeta('meta[property="og:type"]', 'property', 'og:type', 'website');
+  setMeta('meta[property="og:site_name"]', 'property', 'og:site_name', SCHOOL);
+  setMeta('meta[property="og:title"]', 'property', 'og:title', page.title);
+  setMeta('meta[property="og:description"]', 'property', 'og:description', page.description);
+  setMeta('meta[property="og:url"]', 'property', 'og:url', canonical);
+  setMeta('meta[property="og:image"]', 'property', 'og:image', LOGO);
+  setMeta('meta[property="og:locale"]', 'property', 'og:locale', 'en_NG');
+  setMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary');
+  setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', page.title);
+  setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', page.description);
+  setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', LOGO);
+  let canonicalLink = document.head.querySelector('link[rel="canonical"]');
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link');
+    canonicalLink.rel = 'canonical';
+    document.head.appendChild(canonicalLink);
   }
-  link.href = url;
+  canonicalLink.href = canonical;
   const graph = [
-    {'@context':'https://schema.org','@type':'EducationalOrganization','name':'Laff British Montessori School','alternateName':'LAFF','url':'https://laffbritishmontessorischool.com/','logo':'https://laffbritishmontessorischool.com/assets/school-logo.svg','description':'Laff British Montessori School is a caring school community focused on learning, character, confidence and excellence.'},
-    {'@context':'https://schema.org','@type':p[2],'name':p[0],'url':url,'description':p[1],'isPartOf':{'@type':'WebSite','name':'Laff British Montessori School','url':'https://laffbritishmontessorischool.com/'}}
+    { '@context': 'https://schema.org', '@type': 'EducationalOrganization', '@id': SITE + '/#school', name: SCHOOL, alternateName: 'LAFF', url: SITE + '/', logo: LOGO, description: 'A caring school community supporting early years and primary education, practical learning, confidence and positive character.' },
+    { '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE + '/#website', name: SCHOOL, url: SITE + '/', inLanguage: 'en-NG', publisher: { '@id': SITE + '/#school' } },
+    { '@context': 'https://schema.org', '@type': page.type, '@id': canonical + '#webpage', name: page.title, description: page.description, url: canonical, inLanguage: 'en-NG', isPartOf: { '@id': SITE + '/#website' }, about: { '@id': SITE + '/#school' }, breadcrumb: { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' }, ...(path === '/' ? [] : [{ '@type': 'ListItem', position: 2, name: page.section, item: canonical }])] } }
   ];
-  let json = document.head.querySelector('script[data-seo-engine]');
-  if (!json) {
-    json = document.createElement('script');
-    json.type = 'application/ld+json';
-    json.dataset.seoEngine = 'true';
-    document.head.appendChild(json);
+  let structuredData = document.head.querySelector('script[data-seo-engine]');
+  if (!structuredData) {
+    structuredData = document.createElement('script');
+    structuredData.type = 'application/ld+json';
+    structuredData.dataset.seoEngine = 'true';
+    document.head.appendChild(structuredData);
   }
-  json.textContent = JSON.stringify(graph);
+  structuredData.textContent = JSON.stringify(graph);
 })();
